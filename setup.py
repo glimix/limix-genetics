@@ -4,9 +4,8 @@ import sys
 from setuptools import setup
 from setuptools import find_packages
 
-# import pypandoc
-# long_description = pypandoc.convert('README.md', 'rst')
-long_description = ""
+import pypandoc
+long_description = pypandoc.convert('README.md', 'rst')
 
 def setup_package():
     src_path = os.path.dirname(os.path.abspath(sys.argv[0]))
