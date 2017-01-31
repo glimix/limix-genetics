@@ -1,11 +1,16 @@
-import os
-from os.path import join
-import sys
-from setuptools import setup
-from setuptools import find_packages
+from __future__ import unicode_literals
 
-import pypandoc
-long_description = pypandoc.convert('README.md', 'rst')
+import os
+import sys
+
+from setuptools import find_packages, setup
+
+try:
+    import pypandoc
+    long_description = pypandoc.convert_file('README.md', 'rst')
+except (OSError, IOError, ImportError):
+    long_description = open('README.md').read()
+
 
 def setup_package():
     src_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -14,28 +19,35 @@ def setup_package():
     sys.path.insert(0, src_path)
 
     needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
-    pytest_runner = ['pytest-runner'] if needs_pytest else []
+    pytest_runner = ['pytest-runner>=2.9'] if needs_pytest else []
 
-    setup_requires = [] + pytest_runner
-    install_requires = ['numpy>=1.9', 'numba>=0.28']
+    setup_requires = ['ncephes'] + pytest_runner
+    install_requires = [
+        'numpy>=1.9',
+        'numba>=0.28'
+    ]
     tests_require = ['pytest']
 
     metadata = dict(
-        name='limix_genetics',
+        name='limix-genetics',
         version='0.1.0',
-        maintainer="Danilo Horta",
+        maintainer="Limix Developers",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
         description="Genetic related tools for Limix.",
         long_description=long_description,
-        url='http://github.com/glimix/limix-genetics',
+        url='https://github.com/glimix/limix-genetics',
         packages=find_packages(),
-        zip_safe=True,
+        zip_safe=False,
         install_requires=install_requires,
-        tests_require=tests_require,
         setup_requires=setup_requires,
+        tests_require=tests_require,
         include_package_data=True,
-    )
+        classifiers=[
+            "Development Status :: 5 - Production/Stable",
+            "License :: OSI Approved :: MIT License",
+            "Operating System :: OS Independent",
+        ],)
 
     try:
         setup(**metadata)
