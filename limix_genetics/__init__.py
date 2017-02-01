@@ -10,6 +10,7 @@ except _DistributionNotFound:
     __version__ = 'unknown'
 
 from ._core import maf
+from ._qqplot import qqplot
 
 def test():
     r"""Tests this packages."""

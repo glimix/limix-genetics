@@ -24,7 +24,8 @@ def setup_package():
     setup_requires = ['ncephes'] + pytest_runner
     install_requires = [
         'numpy>=1.9',
-        'numba>=0.28'
+        'numba>=0.28',
+        'bokeh'
     ]
     tests_require = ['pytest']
 
