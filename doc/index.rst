@@ -1,22 +1,37 @@
-.. limix-genetics documentation master file, created by
-   sphinx-quickstart on Thu Feb  2 07:42:59 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+===============================
+Limix-genetics's documentation
+===============================
 
-Welcome to limix-genetics's documentation!
-==========================================
+Genetic related tools for Limix.
 
-Contents:
+-------
+Install
+-------
 
-.. toctree::
-   :maxdepth: 2
+The recommended way of installing it is via `conda`_
 
+.. code-block:: bash
 
+  conda install -c conda-forge limix-genetics
 
-Indices and tables
-==================
+An alternative way would be via pip
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. code-block:: bash
 
+  pip install limix-genetics
+
+.. _conda: http://conda.pydata.org/docs/index.html
+
+--------
+Examples
+--------
+
+TODO
+
+*****************
+Comments and bugs
+*****************
+
+You can get the source and open issues `on Github.`_
+
+.. _on Github.: https://github.com/glimix/limix-genetics
