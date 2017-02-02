@@ -21,10 +21,11 @@ def setup_package():
     needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
     pytest_runner = ['pytest-runner>=2.9'] if needs_pytest else []
 
-    setup_requires = ['ncephes'] + pytest_runner
+    setup_requires = [] + pytest_runner
     install_requires = [
         'numpy>=1.9',
-        'bokeh'
+        'bokeh>=0.12',
+        'pandas>=0.18'
     ]
     tests_require = ['pytest']
 
