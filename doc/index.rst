@@ -26,7 +26,7 @@ An alternative way would be via pip
 Examples
 --------
 
-.. plot::
+.. bokeh-plot::
   :include-source:
 
   from pandas import DataFrame
