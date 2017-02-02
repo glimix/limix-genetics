@@ -4,23 +4,24 @@ dist: trusty
 git:
   depth: 5
 python:
-  - 2.7
-  - 3.5
-  - 3.6
+- 2.7
+- 3.5
+- 3.6
 before_install:
-  - travis/install_pandoc.sh
+- travis/install_pandoc.sh
 script:
-  - python setup.py sdist
-  - pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1` -vvv;
-  - pushd /
-  - python -c "import sys; import limix_genetics; sys.exit(limix_genetics.test())"
-  - popd
+- python setup.py sdist
+- pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1` -vvv;
+- pushd /
+- python -c "import sys; import limix_genetics; sys.exit(limix_genetics.test())"
+- popd
 notifications:
   email: false
 deploy:
   provider: pypi
-  skip_upload_docs: true
   user: dhorta
+  password:
+    secure: UdICyXHkuHxTiWKys55FVZKih8RrJkD3hNuTBAm7/IZbgPWYrrECPboaP5qOwavtpytjNGsdlpQEU2G5naeVt8EUtbac21+ImjV2TSnfzrneMz1/EhgD2POtx+TwCXFny5CqmTAbfuCYspamISYoSieujW5ym7VnQiFXQmBpbR2NDABl6tD1cMct9ZETe9GOlasqPQrdN5+vEwVI0fUcgu0CNVRmHY3uuBgUZ4d+V3vIHo+sNGuFMtObPoCtraoBRcFIgzSfOykRgjffsOvttcok/PfIB3wJTztpItbkZMJem8b7oAWT/1pRC19x6wyXJBfzr+Vfh2x+aj1dYqVaB9wWQfkgn7mc4GfygEW7vwNjCMBbPW9IgqefsSUcx5000xRcl+DYFiY5Kvl98FWzG6IKG66bwTnTFVu/FY87zOJH4wHMHWuoZqcncxTp8RWafTBugSdfRpkUOTYI9V6TZO1DtxfbaIRSIsPruB3aqzYDhnEGW8HtdCjNrAZs3W24KOXrtpI9RFK/In/7KZ42G1mwizwGwyO43xdop8hebIhRQnfnOp1P/7fEXkIOiHXEr47SxCvHmMnnC8/63FHnTRTRY7kU6M9enElgrKwCSsqCY6zar7WrCEWkXTMuwx5mliyoGnDZsF/7G6Ndh68/ax47UXINb9UrWz9WwuhHgqo=
   on:
-    distributions: sdist
+    distributions: sdist bdist_wheel
     repo: glimix/limix-genetics
