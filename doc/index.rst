@@ -29,6 +29,8 @@ Examples
 .. bokeh-plot::
   :include-source:
 
+  import os
+  os.environ['BOKEH_DOCS_MISSING_API_KEY_OK'] = 'true'
   from bokeh.plotting import output_file
   from pandas import DataFrame
   from numpy import arange
