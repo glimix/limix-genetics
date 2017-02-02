@@ -13,19 +13,6 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'bokeh.sphinxext.bokeh_autodoc',
-    'bokeh.sphinxext.bokeh_enum',
-    'bokeh.sphinxext.bokeh_gallery',
-    'bokeh.sphinxext.bokeh_github',
-    'bokeh.sphinxext.bokeh_jinja',
-    'bokeh.sphinxext.bokeh_index_toctree',
-    'bokeh.sphinxext.bokeh_model',
-    'bokeh.sphinxext.bokeh_options',
-    'bokeh.sphinxext.bokeh_palette',
-    'bokeh.sphinxext.bokeh_palette_group',
-    'bokeh.sphinxext.bokeh_plot',
-    'bokeh.sphinxext.bokeh_prop',
-    'bokeh.sphinxext.bokeh_sitemap',
 ]
 napoleon_google_docstring = True
 templates_path = ['_templates']

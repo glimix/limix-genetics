@@ -14,8 +14,7 @@ def qqplot(df,
            show=True,
            tools=None,
            nmax_points=1000,
-           atleast_points=0.01,
-           output=None):
+           atleast_points=0.01):
 
     if output is not None:
         output()
