@@ -29,6 +29,7 @@ Examples
 .. bokeh-plot::
   :include-source:
 
+  from bokeh.plotting import output_file
   from pandas import DataFrame
   from numpy import arange
   from numpy.random import RandomState
@@ -59,6 +60,7 @@ Examples
 
   df.sort_index(inplace=True)
 
+  output_file("example.html")
   qqplot(df)
 
 *****************
