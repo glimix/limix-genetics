@@ -22,7 +22,7 @@ def maf(X):
 
 # import matplotlib.pyplot as plt
 import pandas as pd
-import urllib.request
+# import urllib.request
 from numpy import arange
 
 # def kinship_plot(K, row_labels=None, col_labels=None, ax=None, fig=None):

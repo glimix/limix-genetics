@@ -2,7 +2,6 @@ from __future__ import division, absolute_import
 
 import numpy as np
 import colour
-from scipy.special import betaincinv
 from limix_plot import cycler_ as cycler
 from collections import OrderedDict
 

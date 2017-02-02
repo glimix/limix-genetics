@@ -25,7 +25,8 @@ def setup_package():
     install_requires = [
         'numpy>=1.9',
         'bokeh>=0.12',
-        'pandas>=0.18'
+        'pandas>=0.18',
+        'scipy>=0.17'
     ]
     tests_require = ['pytest']
 
