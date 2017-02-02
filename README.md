@@ -5,7 +5,7 @@
 [![Documentation Status](https://readthedocs.org/projects/limix-genetics/badge/?style=flat-square&version=latest)](https://limix-genetics.readthedocs.io/en/latest/)
 
 
-Fast inference for Generalized Linear Mixed Models.
+Genetic-related tools for Limix.
 
 ## Install
 

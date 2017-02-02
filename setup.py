@@ -36,7 +36,7 @@ def setup_package():
         maintainer="Limix Developers",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
-        description="Genetic related tools for Limix.",
+        description="Genetic-related tools for Limix.",
         long_description=long_description,
         url='https://github.com/glimix/limix-genetics',
         packages=find_packages(),
