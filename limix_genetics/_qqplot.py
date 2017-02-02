@@ -14,7 +14,11 @@ def qqplot(df,
            show=True,
            tools=None,
            nmax_points=1000,
-           atleast_points=0.01):
+           atleast_points=0.01,
+           output=None):
+
+    if output is not None:
+        output()
 
     assert nmax_points > 1
 
