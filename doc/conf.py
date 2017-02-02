@@ -1,3 +1,6 @@
+import os
+os.environ['BOKEH_DOCS_MISSING_API_KEY_OK'] = 'true'
+
 try:
     import limix_genetics
     version = limix_genetics.__version__
