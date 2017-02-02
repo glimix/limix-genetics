@@ -8,6 +8,58 @@ from numpy import (append, arange, argsort, flipud, inf, linspace, log10,
 from scipy.special import betaincinv
 
 
+def qqplot(df,
+           figure=None,
+           colors=None,
+           show=True,
+           tools=None,
+           nmax_points=1000,
+           atleast_points=0.01):
+
+    assert nmax_points > 1
+
+    if tools is None:
+        tools = []
+
+    if figure is None:
+        figure = bokeh.plotting.figure(tools=tools)
+
+    labels = _labels(df)
+    colors = _colors(colors, labels)
+    threshold = _threshold(labels, df["p-value"], nmax_points, atleast_points)
+
+    npvals = inf
+
+    for label in labels:
+        dfi = df.loc[(label, ), :]
+
+        pv = dfi['p-value'].values
+        pv.sort()
+
+        npvals = min(npvals, len(pv))
+
+        lpv = -log10(flipud(pv))
+        expected_lpv = _expected(len(lpv))
+
+        i = searchsorted(pv, threshold)
+
+        fill_alpha = 0.8
+        figure.circle(
+            expected_lpv[-i:],
+            lpv[-i:],
+            color=colors[label],
+            fill_alpha=fill_alpha,
+            line_width=0,
+            line_color=None,
+            legend=label)
+
+    _plot_confidence_band(npvals, nmax_points, atleast_points, figure)
+
+    if show:
+        bokeh.plotting.show(figure)
+
+    return figure
+
 def _expected(n):
     lnpv = linspace(1 / (n + 1), n / (n + 1), n, endpoint=True)
     return flipud(-log10(lnpv))
@@ -79,56 +131,3 @@ def _plot_confidence_band(npvals, nmax_points, atleast_points, figure):
         fill_color='black',
         fill_alpha=0.15,
         line_alpha=0.5)
-
-
-def qqplot(df,
-           figure=None,
-           colors=None,
-           show=True,
-           tools=None,
-           nmax_points=1000,
-           atleast_points=0.01):
-
-    assert nmax_points > 1
-
-    if tools is None:
-        tools = []
-
-    if figure is None:
-        figure = bokeh.plotting.figure(tools=tools)
-
-    labels = _labels(df)
-    colors = _colors(colors, labels)
-    threshold = _threshold(labels, df["p-value"], nmax_points, atleast_points)
-
-    npvals = inf
-
-    for label in labels:
-        dfi = df.loc[(label, ), :]
-
-        pv = dfi['p-value'].values
-        pv.sort()
-
-        npvals = min(npvals, len(pv))
-
-        lpv = -log10(flipud(pv))
-        expected_lpv = _expected(len(lpv))
-
-        i = searchsorted(pv, threshold)
-
-        fill_alpha = 0.8
-        figure.circle(
-            expected_lpv[-i:],
-            lpv[-i:],
-            color=colors[label],
-            fill_alpha=fill_alpha,
-            line_width=0,
-            line_color=None,
-            legend=label)
-
-    _plot_confidence_band(npvals, nmax_points, atleast_points, figure)
-
-    if show:
-        bokeh.plotting.show(figure)
-
-    return figure

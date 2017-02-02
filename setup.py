@@ -24,7 +24,6 @@ def setup_package():
     setup_requires = ['ncephes'] + pytest_runner
     install_requires = [
         'numpy>=1.9',
-        'numba>=0.28',
         'bokeh'
     ]
     tests_require = ['pytest']
@@ -39,7 +38,7 @@ def setup_package():
         long_description=long_description,
         url='https://github.com/glimix/limix-genetics',
         packages=find_packages(),
-        zip_safe=False,
+        zip_safe=True,
         install_requires=install_requires,
         setup_requires=setup_requires,
         tests_require=tests_require,
