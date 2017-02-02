@@ -17,9 +17,6 @@ def qqplot(df,
            atleast_points=0.01,
            significance_level=0.01):
 
-    if output is not None:
-        output()
-
     assert nmax_points > 1
 
     if tools is None:
