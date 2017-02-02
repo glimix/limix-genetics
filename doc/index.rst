@@ -27,7 +27,6 @@ Examples
 --------
 
 .. code-block:: python
-  :include-source:
 
   from pandas import DataFrame
   from numpy import arange
