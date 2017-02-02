@@ -14,7 +14,8 @@ def qqplot(df,
            show=True,
            tools=None,
            nmax_points=1000,
-           atleast_points=0.01):
+           atleast_points=0.01,
+           significance_level=0.01):
 
     if output is not None:
         output()
@@ -56,20 +57,23 @@ def qqplot(df,
             line_color=None,
             legend=label)
 
-    _plot_confidence_band(npvals, nmax_points, atleast_points, figure)
+    _plot_confidence_band(npvals, nmax_points, atleast_points, figure,
+                          significance_level)
 
     if show:
         bokeh.plotting.show(figure)
 
     return figure
 
+
 def _expected(n):
     lnpv = linspace(1 / (n + 1), n / (n + 1), n, endpoint=True)
     return flipud(-log10(lnpv))
 
 
-def _rank_confidence_band(nranks, nmax_points, atleast_points):
-    alpha = 0.01
+def _rank_confidence_band(nranks, nmax_points, atleast_points,
+                          significance_level):
+    alpha = significance_level
 
     if nmax_points > nranks - 1:
         k0 = arange(1, nranks + 1)
@@ -114,9 +118,11 @@ def _threshold(labels, pvalues, nmax_points, atleast_points):
     return thr
 
 
-def _plot_confidence_band(npvals, nmax_points, atleast_points, figure):
+def _plot_confidence_band(npvals, nmax_points, atleast_points, figure,
+                          significance_level):
 
-    (bo, me, to) = _rank_confidence_band(npvals, nmax_points, atleast_points)
+    (bo, me, to) = _rank_confidence_band(npvals, nmax_points, atleast_points,
+                                         significance_level)
 
     bo = flipud(-log10(bo))
     me = flipud(-log10(me))
