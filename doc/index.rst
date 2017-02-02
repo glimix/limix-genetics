@@ -26,7 +26,8 @@ An alternative way would be via pip
 Examples
 --------
 
-.. testcode::
+.. plot::
+  :include-source:
 
   from pandas import DataFrame
   from numpy import arange
