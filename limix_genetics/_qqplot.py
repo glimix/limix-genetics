@@ -23,7 +23,10 @@ def qqplot(df,
         tools = []
 
     if figure is None:
-        figure = bokeh.plotting.figure(tools=tools)
+        figure = bokeh.plotting.figure(
+            tools=tools,
+            x_axis_label="theoretical -log$_{10}$(p-value)",
+            y_axis_label="observed -log$_{10}$(p-value)")
 
     labels = _labels(df)
     colors = _colors(colors, labels)
