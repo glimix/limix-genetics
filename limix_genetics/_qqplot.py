@@ -47,7 +47,7 @@ def qqplot(df,
 
         i = searchsorted(pv, threshold)
 
-        fill_alpha = 0.8
+        fill_alpha = 0.5
         figure.circle(
             expected_lpv[-i:],
             lpv[-i:],
@@ -59,6 +59,12 @@ def qqplot(df,
 
     _plot_confidence_band(npvals, nmax_points, atleast_points, figure,
                           significance_level)
+    
+    figure.xaxis.axis_label_text_font_size = "24pt"
+    figure.yaxis.axis_label_text_font_size = "24pt"
+    figure.legend.label_text_font_size = "22pt"
+    figure.xaxis.major_label_text_font_size = "18pt"
+    figure.yaxis.major_label_text_font_size = "18pt"
 
     if show:
         bokeh.plotting.show(figure)
@@ -113,7 +119,7 @@ def _threshold(labels, pvalues, nmax_points, atleast_points):
         pv.sort()
         if len(pv) > nmax_points:
             npoints = max(nmax_points, int(atleast_points * len(pv)))
-            n = len(pv)
+            npoints = min(len(pv) - 1, npoints)
             thr = min(thr, (pv[npoints - 1] + pv[npoints]) / 2)
     return thr
 
