@@ -47,7 +47,7 @@ def qqplot(df,
 
         i = searchsorted(pv, threshold)
 
-        fill_alpha = 0.5
+        fill_alpha = 1.0
         figure.circle(
             expected_lpv[-i:],
             lpv[-i:],
