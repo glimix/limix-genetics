@@ -15,7 +15,7 @@ def qqplot(df,
            tools=None,
            nmax_points=1000,
            atleast_points=0.01,
-           significance_level=0.01):
+           significance_level=0.01, **kwargs):
 
     assert nmax_points > 1
 
@@ -26,7 +26,8 @@ def qqplot(df,
         figure = bokeh.plotting.figure(
             tools=tools,
             x_axis_label="theoretical -log10(p-value)",
-            y_axis_label="observed -log10(p-value)")
+            y_axis_label="observed -log10(p-value)",
+            **kwargs)
 
     labels = _labels(df)
     colors = _colors(colors, labels)
@@ -59,7 +60,7 @@ def qqplot(df,
 
     _plot_confidence_band(npvals, nmax_points, atleast_points, figure,
                           significance_level)
-    
+
     figure.xaxis.axis_label_text_font_size = "24pt"
     figure.yaxis.axis_label_text_font_size = "24pt"
     figure.legend.label_text_font_size = "22pt"
