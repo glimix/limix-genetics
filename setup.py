@@ -32,7 +32,7 @@ def setup_package():
 
     metadata = dict(
         name='limix-genetics',
-        version='0.1.3',
+        version='0.1.4',
         maintainer="Limix Developers",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
