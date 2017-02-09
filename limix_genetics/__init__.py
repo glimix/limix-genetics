@@ -1,3 +1,9 @@
+r"""Genetic-related tools for Limix..
+
+.. moduleauthor:: Danilo Horta <horta@ebi.ac.uk>
+
+"""
+
 from __future__ import absolute_import as _
 from __future__ import unicode_literals as _
 

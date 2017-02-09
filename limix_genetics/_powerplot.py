@@ -16,15 +16,47 @@ def hitsplot(df,
              figure=None,
              colors=None,
              show=True,
-             tools=['save'],
+             tools=None,
              min_threshold=1e-5,
              max_threshold=1e-2,
              paper_settings=False,
              perc=False,
              **kwargs):
+    r"""Plot number of significant hits across p-value thresholds.
+
+    Args:
+        df (:class:`pandas.DataFrame`): Columns `label` and `p-value`
+            define labeled curves.
+
+    Example:
+
+        .. doctest::
+
+            >>> from limix_genetics import hitsplot
+            >>> import pandas as pd
+            >>> import numpy as np
+            >>> random = np.random.RandomState(0)
+            >>>
+            >>> snp_ids = np.arange(1000)
+            >>>
+            >>> data1 = np.stack((['method1']*1000, random.rand(1000) * 0.1),
+            >>>                  axis=1)
+            >>> df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
+            >>>                    index=snp_ids)
+            >>>
+            >>> data2 = np.stack((['method2']*1000, random.rand(1000) * 0.05),
+            >>>                  axis=1)
+            >>> df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
+            >>>                    index=snp_ids)
+            >>>
+            >>> df = pd.concat([df1, df2])
+            >>>
+            >>> hitsplot(df)
+
+    """
 
     if tools is None:
-        tools = []
+        tools = ['save']
 
     if figure is None:
         figure = bokeh.plotting.figure(
@@ -36,8 +68,10 @@ def hitsplot(df,
 
     x = linspace(min_threshold, max_threshold, 100)
 
+
     labels = df['label'].unique()
-    p_values = {m: df[df['label'] == m]['p-value'].values for m in labels}
+    p_values = {m: df[df['label'] == m]['p-value'].astype(float).values
+                for m in labels}
     nhits = {m: empty(len(x), int) for m in labels}
 
     for l in labels:
