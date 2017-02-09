@@ -60,6 +60,17 @@ Examples
 
   qqplot(df, show=False)
 
+  *********
+  Functions
+  *********
+
+  .. automodule:: limix_genetics
+
+    .. autofunction:: maf
+    .. autofunction:: qqplot
+    .. autofunction:: hitsplot
+
+
 *****************
 Comments and bugs
 *****************

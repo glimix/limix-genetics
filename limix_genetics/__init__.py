@@ -36,3 +36,5 @@ def test():
         print("Congratulations. All tests have passed!")
 
     return return_code
+
+__all__ = ['__version__', 'maf', 'qqplot', 'hitsplot']
