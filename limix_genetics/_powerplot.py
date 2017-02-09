@@ -43,8 +43,7 @@ def hitsplot(df,
     for l in labels:
         _get_nhits(sort(p_values[l]), nhits[l], x)
 
-    ntests = df.groupby('label').count()
-    print(ntests.head())
+    ntests = df.groupby('label').count().to_dict()['p-value']
 
     if perc:
         for l in labels:
