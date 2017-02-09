@@ -37,7 +37,7 @@ def hitsplot(df,
     x = linspace(min_threshold, max_threshold, 100)
 
     labels = df['label'].unique()
-    p_values = {m: df[df['label'] == m]['p-values'].values for m in labels}
+    p_values = {m: df[df['label'] == m]['p-value'].values for m in labels}
     nhits = {m: empty(len(x), int) for m in labels}
 
     for l in labels:
