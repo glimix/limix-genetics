@@ -43,10 +43,13 @@ def hitsplot(df,
     for l in labels:
         _get_nhits(sort(p_values[l]), nhits[l], x)
 
+    ntests = df.groupby('label').count()
+    print(ntests.head())
+
     if perc:
         for l in labels:
             nhits[l] = asarray(nhits[l], float)
-            nhits[l] /= sum(nhits[l])
+            nhits[l] /= ntests[l]
             nhits[l] *= 100
         figure.yaxis.axis_label = "percentage of hits"
 
