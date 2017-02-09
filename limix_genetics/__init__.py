@@ -11,6 +11,7 @@ except _DistributionNotFound:
 
 from ._core import maf
 from ._qqplot import qqplot
+from ._powerplot import hitsplot
 
 def test():
     r"""Tests this packages."""

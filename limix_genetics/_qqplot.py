@@ -7,15 +7,20 @@ from numpy import (append, arange, argsort, flipud, inf, linspace, log10,
                    logspace, partition, searchsorted)
 from scipy.special import betaincinv
 
+from ._colors import get_colors
+from ._config import set_figure_for_paper
+
 
 def qqplot(df,
            figure=None,
            colors=None,
            show=True,
-           tools=None,
+           tools=['save'],
            nmax_points=1000,
            atleast_points=0.01,
-           significance_level=0.01, **kwargs):
+           significance_level=0.01,
+           paper_settings=False,
+           **kwargs):
 
     assert nmax_points > 1
 
@@ -24,13 +29,14 @@ def qqplot(df,
 
     if figure is None:
         figure = bokeh.plotting.figure(
+            title='qqplot',
             tools=tools,
             x_axis_label="theoretical -log10(p-value)",
             y_axis_label="observed -log10(p-value)",
             **kwargs)
 
     labels = _labels(df)
-    colors = _colors(colors, labels)
+    colors = get_colors(colors, labels)
     threshold = _threshold(labels, df["p-value"], nmax_points, atleast_points)
 
     npvals = inf
@@ -61,11 +67,8 @@ def qqplot(df,
     _plot_confidence_band(npvals, nmax_points, atleast_points, figure,
                           significance_level)
 
-    figure.xaxis.axis_label_text_font_size = "24pt"
-    figure.yaxis.axis_label_text_font_size = "24pt"
-    figure.legend.label_text_font_size = "22pt"
-    figure.xaxis.major_label_text_font_size = "18pt"
-    figure.yaxis.major_label_text_font_size = "18pt"
+    if paper_settings:
+        set_figure_for_paper(figure)
 
     if show:
         bokeh.plotting.show(figure)
@@ -101,16 +104,6 @@ def _labels(df):
     level = df.index.names.index('label')
     assert level == 0
     return list(df.index.get_level_values(level).unique())
-
-
-def _colors(colors, labels):
-    if colors is None:
-        colors = dict()
-        from bokeh.palettes import brewer
-        colors_iter = iter(brewer['Spectral'][11])
-        for label in labels:
-            colors[label] = next(colors_iter)
-    return colors
 
 
 def _threshold(labels, pvalues, nmax_points, atleast_points):
