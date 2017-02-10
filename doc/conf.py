@@ -1,8 +1,13 @@
+import os
+os.environ['BOKEH_DOCS_MISSING_API_KEY_OK'] = 'yes'
+
 try:
     import limix_genetics
     version = limix_genetics.__version__
 except ImportError:
     version = 'unknown'
+
+
 
 extensions = [
     'sphinx.ext.autodoc',
