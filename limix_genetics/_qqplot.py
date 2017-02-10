@@ -29,7 +29,7 @@ def qqplot(df,
 
     Example:
 
-        .. doctest::
+        .. code-block:: python
 
             >>> from limix_genetics import qqplot
             >>> import pandas as pd
