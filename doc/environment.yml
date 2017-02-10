@@ -33,3 +33,4 @@ dependencies:
 - pip:
   - https://pypi.python.org/packages/48/04/5c88cc51c6713583f2dc78a5296adb9741505348c323d5875bc976143db2/ggplot-0.11.5-py2.py3-none-any.whl#md5=d0bfa0b6d02a988cd214b411542ea453
   - https://pypi.python.org/packages/5a/a9/3ba9179a8ede42c8ea7d84e712fe9ddda7a902ba48570fb78a64cdd72de3/sphinxcontrib_httpdomain-1.5.0-py2.py3-none-any.whl#md5=1efa177b5b2cc1dacca06027ba087da2
+  - https://pypi.python.org/packages/87/1b/c39b7c65b5612812b83d6cab7ef2885eac9f6beb0b7b8a7071a186aea3b1/packaging-16.8-py2.py3-none-any.whl#md5=c7326351bf015fa53c74b0075923ab02
