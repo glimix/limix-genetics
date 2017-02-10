@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
 import os
 os.environ['BOKEH_DOCS_MISSING_API_KEY_OK'] = 'yes'
 
@@ -8,12 +12,10 @@ except ImportError:
     version = 'unknown'
 
 
-
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.doctest',
-    'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
     'bokeh.sphinxext.bokeh_plot'
@@ -31,7 +33,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'conf.py']
 pygments_style = 'sphinx'
 todo_include_todos = False
 html_theme = 'default'
-html_theme_path = ["_themes", ]
 htmlhelp_basename = 'limix-geneticsdoc'
 latex_elements = {}
 latex_documents = [
