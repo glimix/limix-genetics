@@ -29,7 +29,7 @@ def qqplot(df,
 
     Example:
 
-        .. code-block:: python
+        .. bokeh-plot::
 
             from limix_genetics import qqplot
             import pandas as pd
