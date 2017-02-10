@@ -32,42 +32,27 @@ def hitsplot(df,
 
         .. bokeh-plot::
 
-            from bokeh.plotting import figure, output_file, show
+            from limix_genetics import hitsplot
+            import pandas as pd
+            import numpy as np
+            random = np.random.RandomState(0)
 
-            output_file("example_bokeh.html")
+            snp_ids = np.arange(1000)
 
-            x = [1, 2, 3, 4, 5]
-            y = [6, 7, 6, 4, 5]
+            data1 = np.stack((['method1']*1000, random.rand(1000) * 0.1),
+                             axis=1)
+            df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
+                               index=snp_ids)
 
-            p = figure(title="example_bokeh", plot_width=300, plot_height=300)
-            p.line(x, y, line_width=2)
-            p.circle(x, y, size=10, fill_color="white")
+            data2 = np.stack((['method2']*1000, random.rand(1000) * 0.05),
+                             axis=1)
+            df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
+                               index=snp_ids)
 
-            show(p)
+            df = pd.concat([df1, df2])
+
+            hitsplot(df)
     """
-            # .. bokeh-plot::
-            #
-            #     from limix_genetics import hitsplot
-            #     import pandas as pd
-            #     import numpy as np
-            #     random = np.random.RandomState(0)
-            #
-            #     snp_ids = np.arange(1000)
-            #
-            #     data1 = np.stack((['method1']*1000, random.rand(1000) * 0.1),
-            #                      axis=1)
-            #     df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
-            #                        index=snp_ids)
-            #
-            #     data2 = np.stack((['method2']*1000, random.rand(1000) * 0.05),
-            #                      axis=1)
-            #     df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
-            #                        index=snp_ids)
-            #
-            #     df = pd.concat([df1, df2])
-            #
-            #     hitsplot(df)
-
 
     if tools is None:
         tools = ['save']

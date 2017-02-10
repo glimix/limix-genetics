@@ -51,7 +51,6 @@ def qqplot(df,
             df = pd.concat([df1, df2])
 
             qqplot(df)
-
     """
 
     assert nmax_points > 1

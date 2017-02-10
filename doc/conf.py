@@ -20,7 +20,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
     'bokeh.sphinxext.bokeh_autodoc',
-    'bokeh.sphinxext.bokeh_jinja',
     'bokeh.sphinxext.bokeh_plot',
 ]
 napoleon_google_docstring = True
@@ -35,9 +34,7 @@ language = None
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'conf.py']
 pygments_style = 'sphinx'
 todo_include_todos = False
-# html_theme = 'default'
-html_theme = 'bokeh_theme'
-html_theme_path = ['.']
+html_theme = 'default'
 htmlhelp_basename = 'limix-geneticsdoc'
 latex_elements = {}
 latex_documents = [
@@ -57,10 +54,3 @@ intersphinx_mapping = {
     'python': ('http://docs.python.org/', None),
     'numpy': ('http://docs.scipy.org/doc/numpy/', None)
 }
-html_context = {
-    'SITEMAP_BASE_URL': 'https://limix-genetics.readthedocs.io/en/latest/',
-    'DESCRIPTION': 'Genetic related tools for Limix',
-    'AUTHOR': author,
-    'VERSION': version,
-}
-html_show_sourcelink = True
