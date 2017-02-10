@@ -15,17 +15,50 @@ def qqplot(df,
            figure=None,
            colors=None,
            show=True,
-           tools=['save'],
+           tools=None,
            nmax_points=1000,
            atleast_points=0.01,
            significance_level=0.01,
            paper_settings=False,
            **kwargs):
+    r"""Plot number of significant hits across p-value thresholds.
+
+    Args:
+        df (:class:`pandas.DataFrame`): Columns `label` and `p-value`
+            define labeled curves.
+
+    Example:
+
+        .. doctest::
+
+            >>> from limix_genetics import qqplot
+            >>> import pandas as pd
+            >>> import numpy as np
+            >>> random = np.random.RandomState(0)
+            >>>
+            >>> snp_ids = np.arange(1000)
+            >>>
+            >>> data1 = np.stack((['method1']*1000, random.rand(1000)),
+            >>>                  axis=1)
+            >>> df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
+            >>>                    index=snp_ids)
+            >>>
+            >>> data2 = np.stack((['method2']*1000, random.rand(1000)),
+            >>>                  axis=1)
+            >>> df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
+            >>>                    index=snp_ids)
+            >>>
+            >>> df = pd.concat([df1, df2])
+            >>>
+            >>> qqplot(df)
+
+    """
 
     assert nmax_points > 1
 
+
     if tools is None:
-        tools = []
+        tools = ['save']
 
     if figure is None:
         figure = bokeh.plotting.figure(
@@ -35,16 +68,14 @@ def qqplot(df,
             y_axis_label="observed -log10(p-value)",
             **kwargs)
 
-    labels = _labels(df)
+    labels = df['label'].unique()
     colors = get_colors(colors, labels)
-    threshold = _threshold(labels, df["p-value"], nmax_points, atleast_points)
+    threshold = _threshold(labels, df, nmax_points, atleast_points)
 
     npvals = inf
 
     for label in labels:
-        dfi = df.loc[(label, ), :]
-
-        pv = dfi['p-value'].values
+        pv = df[df['label'] == label]['p-value'].astype(float).values
         pv.sort()
 
         npvals = min(npvals, len(pv))
@@ -54,12 +85,10 @@ def qqplot(df,
 
         i = searchsorted(pv, threshold)
 
-        fill_alpha = 1.0
         figure.circle(
             expected_lpv[-i:],
             lpv[-i:],
             color=colors[label],
-            fill_alpha=fill_alpha,
             line_width=0,
             line_color=None,
             legend=label)
@@ -106,10 +135,10 @@ def _labels(df):
     return list(df.index.get_level_values(level).unique())
 
 
-def _threshold(labels, pvalues, nmax_points, atleast_points):
+def _threshold(labels, df, nmax_points, atleast_points):
     thr = 1.0
     for label in labels:
-        pv = pvalues.loc[(label, )].values
+        pv = df[df['label'] == label]['p-value'].astype(float).values
         pv.sort()
         if len(pv) > nmax_points:
             npoints = max(nmax_points, int(atleast_points * len(pv)))
