@@ -18,7 +18,7 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'bokeh.sphinxext.bokeh_plot'
+    'bokeh.sphinxext.*'
 ]
 napoleon_google_docstring = True
 templates_path = ['_templates']
