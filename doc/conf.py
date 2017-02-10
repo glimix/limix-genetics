@@ -11,6 +11,7 @@ try:
 except ImportError:
     version = 'unknown'
 
+needs_sphinx = '1.5'
 
 extensions = [
     'sphinx.ext.autodoc',
@@ -30,7 +31,6 @@ extensions = [
     'bokeh.sphinxext.bokeh_palette_group',
     'bokeh.sphinxext.bokeh_plot',
     'bokeh.sphinxext.bokeh_prop',
-    'bokeh.sphinxext.bokeh_sitemap',
     'bokeh.sphinxext.collapsible_code_block',
 ]
 napoleon_google_docstring = True
@@ -71,3 +71,4 @@ html_context = {
     'AUTHOR': author,
     'VERSION': version,
 }
+html_show_sourcelink = True
