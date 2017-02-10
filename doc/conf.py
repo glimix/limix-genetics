@@ -65,3 +65,9 @@ intersphinx_mapping = {
     'python': ('http://docs.python.org/', None),
     'numpy': ('http://docs.scipy.org/doc/numpy/', None)
 }
+html_context = {
+    'SITEMAP_BASE_URL': 'https://limix-genetics.readthedocs.io/en/latest/',
+    'DESCRIPTION': 'Genetic related tools for Limix',
+    'AUTHOR': author,
+    'VERSION': version,
+}
