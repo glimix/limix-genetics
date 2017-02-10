@@ -32,6 +32,10 @@ def hitsplot(df,
 
         .. bokeh-plot::
 
+            from bokeh.plotting import output_file
+
+            output_file("example.html")
+
             from limix_genetics import hitsplot
             import pandas as pd
             import numpy as np
