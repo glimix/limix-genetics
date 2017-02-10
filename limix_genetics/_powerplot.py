@@ -30,7 +30,7 @@ def hitsplot(df,
 
     Example:
 
-        .. code-block:: python
+        .. bokeh-plot::
 
             from limix_genetics import hitsplot
             import pandas as pd

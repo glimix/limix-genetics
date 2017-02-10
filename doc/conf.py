@@ -11,6 +11,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
+    'bokeh.sphinxext.bokeh_plot'
 ]
 napoleon_google_docstring = True
 templates_path = ['_templates']
