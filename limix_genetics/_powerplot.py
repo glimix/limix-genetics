@@ -32,26 +32,26 @@ def hitsplot(df,
 
         .. code-block:: python
 
-            >>> from limix_genetics import hitsplot
-            >>> import pandas as pd
-            >>> import numpy as np
-            >>> random = np.random.RandomState(0)
-            >>>
-            >>> snp_ids = np.arange(1000)
-            >>>
-            >>> data1 = np.stack((['method1']*1000, random.rand(1000) * 0.1),
-            >>>                  axis=1)
-            >>> df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
-            >>>                    index=snp_ids)
-            >>>
-            >>> data2 = np.stack((['method2']*1000, random.rand(1000) * 0.05),
-            >>>                  axis=1)
-            >>> df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
-            >>>                    index=snp_ids)
-            >>>
-            >>> df = pd.concat([df1, df2])
-            >>>
-            >>> hitsplot(df)
+            from limix_genetics import hitsplot
+            import pandas as pd
+            import numpy as np
+            random = np.random.RandomState(0)
+
+            snp_ids = np.arange(1000)
+
+            data1 = np.stack((['method1']*1000, random.rand(1000) * 0.1),
+                             axis=1)
+            df1 = pd.DataFrame(data1, columns=['label', 'p-value'],
+                               index=snp_ids)
+
+            data2 = np.stack((['method2']*1000, random.rand(1000) * 0.05),
+                             axis=1)
+            df2 = pd.DataFrame(data2, columns=['label', 'p-value'],
+                               index=snp_ids)
+
+            df = pd.concat([df1, df2])
+
+            hitsplot(df)
 
     """
 
