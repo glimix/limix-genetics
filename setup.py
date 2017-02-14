@@ -27,7 +27,8 @@ def setup_package():
         'bokeh>=0.12',
         'pandas>=0.18',
         'scipy>=0.17',
-        'numba>=0.29'
+        'numba>=0.29',
+        'numpy-sugar>=1.0.24'
     ]
     tests_require = ['pytest']
 

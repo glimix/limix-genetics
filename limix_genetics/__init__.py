@@ -18,6 +18,8 @@ except _DistributionNotFound:
 from ._core import maf
 from ._qqplot import qqplot
 from ._powerplot import hitsplot
+from ._mvnorm import mvn_ecdf
+from ._mvnorm import mvn_eicdf
 
 def test():
     r"""Tests this packages."""
